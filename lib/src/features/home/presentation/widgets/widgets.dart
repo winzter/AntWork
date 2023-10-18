@@ -5,3 +5,7 @@ export 'card_service.dart';
 export 'interest_choice.dart';
 export 'what_new.dart';
 export 'what_new_card.dart';
+export 'service_1_card.dart';
+export 'service_2_card.dart';
+export 'service_3_card.dart';
+export 'card_jobs.dart';

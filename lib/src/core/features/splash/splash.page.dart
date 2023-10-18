@@ -38,17 +38,11 @@ class _SplashPageState extends State<SplashPage> {
           Container(
             constraints: const BoxConstraints.expand(),
             decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                   Color(0xff27385E),
-                   Color(0xff275F77),
-                ]
-              )
             ),
-            // child: Image.asset(
-            //   'assets/images/splash.png',
-            //   fit: BoxFit.cover,
-            // ),
+            child: Image.asset(
+              'assets/logo/antwork_bg1.png',
+              fit: BoxFit.cover,
+            ),
           ),
           Positioned(
             top: 0,
