@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductDetail extends StatefulWidget {
@@ -138,23 +139,332 @@ class _ProductDetailState extends State<ProductDetail> {
                   ),
                 ),
                 const ProductDescription(),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).devicePixelRatio * 4,
-                  ),
-                  child: const Row(
-                    children: [
-                      Flexible(
-                          child: Text(
-                            "แพ็คเกจลดราคาแบบครบวงจร",
-                            style: TextStyle(fontSize: 17),
-                          ))
-                    ],
-                  ),
-                ),
+                const ProductCheckList(),
+                const ShipDetail(),
+                const UserComments(),
               ],
             )),
       ),
+    );
+  }
+}
+
+class UserComments extends StatelessWidget {
+  const UserComments({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).devicePixelRatio * 4,
+          vertical: MediaQuery.of(context).devicePixelRatio * 7),
+      child: Column(
+        children: [
+          const Row(
+            children: [
+              Text(
+                "ความคิดเห็นของผู้ใช้งาน",
+                style: TextStyle(fontSize: 17),
+              )
+            ],
+          ),
+          const Row(
+            children: [
+              Text(
+                "4.8 คะแนน",
+                style: TextStyle(fontSize: 16),
+              )
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width*0.5,
+                child: LinearPercentIndicator(
+                  percent: 0.65,
+                  lineHeight: 10,
+                  backgroundColor: const Color(0xffEDEDED),
+                  progressColor: const Color(0xffA1A1A1),
+                ),
+              ),
+              const Row(children: [
+                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
+                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
+                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
+                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
+                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
+                Text("65%")
+              ],)
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width*0.5,
+                child: LinearPercentIndicator(
+                  percent: 0.28,
+                  lineHeight: 10,
+                  backgroundColor: const Color(0xffEDEDED),
+                  progressColor: const Color(0xffA1A1A1),
+                ),
+              ),
+              const Row(children: [
+                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
+                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
+                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
+                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
+                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
+                Text("28%")
+              ],)
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width*0.5,
+                child: LinearPercentIndicator(
+                  percent: 0.05,
+                  lineHeight: 10,
+                  backgroundColor: const Color(0xffEDEDED),
+                  progressColor: const Color(0xffA1A1A1),
+                ),
+              ),
+              const Row(children: [
+                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
+                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
+                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
+                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
+                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
+                Text("5%")
+              ],)
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width*0.5,
+                child: LinearPercentIndicator(
+                  percent: 0.01,
+                  lineHeight: 10,
+                  backgroundColor: const Color(0xffEDEDED),
+                  progressColor: const Color(0xffA1A1A1),
+                ),
+              ),
+              const Row(children: [
+                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
+                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
+                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
+                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
+                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
+                Text("1%")
+              ],)
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width*0.5,
+                child: LinearPercentIndicator(
+                  percent: 0.01,
+                  lineHeight: 10,
+                  backgroundColor: const Color(0xffEDEDED),
+                  progressColor: const Color(0xffA1A1A1),
+                ),
+              ),
+              const Row(children: [
+                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
+                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
+                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
+                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
+                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
+                Text("1%")
+              ],)
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ShipDetail extends StatelessWidget {
+  const ShipDetail({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).devicePixelRatio * 4,
+              vertical: MediaQuery.of(context).devicePixelRatio * 5),
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 40),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: const Offset(0, 3),
+                  ),
+                ]),
+            child: const Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("วันที่ส่ง"),
+                    Text("3 Days", style: TextStyle(color: Color(0xff757575))),
+                  ],
+                ),
+                Divider(thickness: 1.2, indent: 10, endIndent: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("การแก้ไข"),
+                    Text("Unlimited",
+                        style: TextStyle(color: Color(0xff757575))),
+                  ],
+                ),
+                Divider(thickness: 1.2, indent: 10, endIndent: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("รวมแนวคิดจำนวน"),
+                    Text("2", style: TextStyle(color: Color(0xff757575))),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).devicePixelRatio * 4),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Radio(
+                      value: "radio value",
+                      groupValue: "group value",
+                      onChanged: (value) {}),
+                  const Text("ส่งด่ววนภายใน 2 วัน",
+                      style: TextStyle(color: Color(0xff757575))),
+                ],
+              ),
+              const Text("+ 500 บาท",
+                  style: TextStyle(color: Color(0xff757575)))
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).devicePixelRatio * 4),
+          child: SizedBox(
+              height: 40,
+              width: MediaQuery.of(context).size.width,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xff68D5E8),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20))),
+                child: const Text(
+                  "ซื้อเลย",
+                  style: TextStyle(fontSize: 18),
+                ),
+              )),
+        )
+      ],
+    );
+  }
+}
+
+class ProductCheckList extends StatelessWidget {
+  const ProductCheckList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).devicePixelRatio * 4,
+          ),
+          child: const Row(
+            children: [
+              Flexible(
+                  child: Text(
+                "แพ็คเกจลดราคาแบบครบวงจร",
+                style: TextStyle(fontSize: 17),
+              ))
+            ],
+          ),
+        ),
+        const SizedBox(height: 5),
+        Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).devicePixelRatio * 4,
+            ),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Image.asset("assets/icons/check.png", width: 17),
+                    const SizedBox(width: 15),
+                    const Text("2 ตัวเลือกสำหรับโลโก้",
+                        style: TextStyle(color: Color(0xff757575)))
+                  ],
+                ),
+                const SizedBox(height: 3),
+                Row(
+                  children: [
+                    Image.asset("assets/icons/check.png", width: 17),
+                    const SizedBox(width: 15),
+                    const Text("ไฟล์ JPG และ PNG",
+                        style: TextStyle(color: Color(0xff757575)))
+                  ],
+                ),
+                const SizedBox(height: 3),
+                Row(
+                  children: [
+                    Image.asset("assets/icons/check.png", width: 17),
+                    const SizedBox(width: 15),
+                    const Text("ไฟลเวกเตอร์",
+                        style: TextStyle(color: Color(0xff757575)))
+                  ],
+                ),
+                const SizedBox(height: 3),
+                Row(
+                  children: [
+                    Image.asset("assets/icons/check.png", width: 17),
+                    const SizedBox(width: 15),
+                    const Text("ไฟล์ที่พิมพ์ได้",
+                        style: TextStyle(color: Color(0xff757575)))
+                  ],
+                ),
+                const SizedBox(height: 3),
+                Row(
+                  children: [
+                    Image.asset("assets/icons/check.png", width: 17),
+                    const SizedBox(width: 15),
+                    const Text("แบบจำลอง 3 มิติ",
+                        style: TextStyle(color: Color(0xff757575)))
+                  ],
+                ),
+              ],
+            )),
+      ],
     );
   }
 }
@@ -205,9 +515,9 @@ class ProductDescription extends StatelessWidget {
             children: [
               Flexible(
                   child: Text(
-                    "Design creative minimalist logo",
-                    style: TextStyle(fontSize: 18),
-                  ))
+                "Design creative minimalist logo",
+                style: TextStyle(fontSize: 18),
+              ))
             ],
           ),
         ),
@@ -226,8 +536,7 @@ class ProductDescription extends StatelessWidget {
                   trimMode: TrimMode.Line,
                   trimCollapsedText: 'อ่านเพิ่มเติม',
                   trimExpandedText: 'อ่านน้อยลง',
-                  style: TextStyle(
-                      color: Color(0xff757575), fontSize: 14),
+                  style: TextStyle(color: Color(0xff757575), fontSize: 14),
                   lessStyle: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
@@ -245,4 +554,3 @@ class ProductDescription extends StatelessWidget {
     );
   }
 }
-

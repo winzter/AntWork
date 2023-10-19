@@ -3,35 +3,30 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import '../../core/provider/bottom_navbar/bottom_navbar_provider.dart';
 import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/message/presentation/pages/chat_page.dart';
+import '../../features/search_service/presentation/pages/search_page.dart';
 
 class BottomNavbar extends StatefulWidget {
-  const BottomNavbar({Key? key}) : super(key: key);
+  const BottomNavbar({super.key});
 
   @override
   State<BottomNavbar> createState() => _BottomNavbarState();
 }
 
 class _BottomNavbarState extends State<BottomNavbar> {
-
   List<Widget> pages = const [
     HomePage(),
-    Text("data2"),
-    Text("data3"),
+    ChatPage(),
+    SearchPage(),
     Text("data4"),
     Text("data5"),
   ];
-
-  int visit = 0;
-  double height = 30;
-  Color colorSelect =const Color(0XFF0686F8);
-  Color color = const Color(0XFF7AC0FF);
-  Color color2 = const Color(0XFF96B1FD);
-  Color bgColor = const  Color(0XFF1752FE);
 
   @override
   Widget build(BuildContext context) {
     final navigationProvider = Provider.of<NavIndex>(context);
     return Scaffold(
+      extendBody: true,
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: navigationProvider.controller,
@@ -47,13 +42,12 @@ class _BottomNavbarState extends State<BottomNavbar> {
               right: 0,
               bottom: 0,
               child: Container(
-                height: 60,
+                height: 65,
                 decoration: const BoxDecoration(
                     gradient: LinearGradient(colors: [
-                      Color(0xff6FC9E4),
-                      Color(0xffE793B8),
-                    ])
-                ),
+                  Color(0xff6FC9E4),
+                  Color(0xffE793B8),
+                ])),
               )),
           Padding(
             padding: const EdgeInsets.all(8.0),

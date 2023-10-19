@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import '../widgets/widgets.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -80,4 +86,7 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
