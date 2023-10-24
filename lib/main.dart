@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       title: 'AntWork',
       theme: ThemeData(
         fontFamily: 'kanit',
-        useMaterial3: false,
+        useMaterial3: true,
       ),
       home: const SplashPage(),
     );

@@ -15,10 +15,10 @@ class _SearchPageState extends State<SearchPage> {
       body: Stack(
         children: [
           AppBar(
-            title: const Text("Search Services",style: TextStyle(fontSize: 25),),
+            title: const Text("Search Services",style: TextStyle(fontSize: 25,color: Colors.white),),
             centerTitle: true,
             actions: [
-              IconButton(onPressed: (){}, icon: const Icon(Icons.search_rounded,size: 40))
+              IconButton(onPressed: (){}, icon: const Icon(Icons.search_rounded,size: 40,color: Colors.white,))
             ],
             toolbarHeight: MediaQuery.of(context).size.height * 0.2,
             flexibleSpace: Container(
@@ -54,21 +54,32 @@ class _SearchPageState extends State<SearchPage> {
                   length: 2,
                   child: Column(
                     children: [
-                      ButtonsTabBar(
-                          radius: 12,
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 12),
-                          decoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Color(0xFF6FC9E4),
-                                Color(0xFFE793B8),
-                              ],
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ButtonsTabBar(
+                            radius: 20,
+                            unselectedBackgroundColor: Colors.transparent,
+                            buttonMargin: const EdgeInsets.symmetric(horizontal: 50),
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 15,vertical: 0),
+                            decoration: const BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Color(0xFF6FC9E4),
+                                  Color(0xFFE793B8),
+                                ],
+                              ),
                             ),
-                          ),
-                          tabs: const[
-                            Tab(child: Text("หมวดหมู่",style: TextStyle(color: Colors.white),),),
-                            Tab(child: Text("ความสนใจ",style: TextStyle(color: Colors.white),),),
-                          ]),
+                            tabs: const[
+                              Tab(child: Text("หมวดหมู่",style: TextStyle(color: Colors.black,fontFamily: 'kanit'),),),
+                              Tab(child: Text("ความสนใจ",style: TextStyle(color: Colors.black,fontFamily: 'kanit'),),),
+                            ]),
+                      ),
+                      const Expanded(child: TabBarView(
+                        children: [
+                          Text("data"),
+                          Text("data"),
+                        ],
+                      ))
                     ],
                   ),
                 ),

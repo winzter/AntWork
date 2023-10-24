@@ -381,7 +381,7 @@ class ShipDetail extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20))),
                 child: const Text(
                   "ซื้อเลย",
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 18,color: Colors.white),
                 ),
               )),
         )

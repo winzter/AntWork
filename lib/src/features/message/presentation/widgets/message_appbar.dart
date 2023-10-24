@@ -4,10 +4,10 @@ PreferredSizeWidget messageAppbar(BuildContext context){
   return AppBar(
     elevation: 0,
     toolbarHeight: MediaQuery.of(context).size.height*0.1,
-    title: const Text("Messenger",style: TextStyle(fontSize: 25)),
+    title: const Text("Messenger",style: TextStyle(fontSize: 25,color: Colors.white)),
     centerTitle: true,
     actions: [
-      IconButton(onPressed: (){}, icon: const Icon(Icons.add,size: 40,))
+      IconButton(onPressed: (){}, icon: const Icon(Icons.add,size: 40,color: Colors.white,))
     ],
     flexibleSpace: Container(
       decoration: const BoxDecoration(

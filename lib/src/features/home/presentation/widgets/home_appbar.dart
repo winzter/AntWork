@@ -4,7 +4,7 @@ PreferredSizeWidget homeAppbar(BuildContext context){
   return AppBar(
     elevation: 0,
     toolbarHeight: MediaQuery.of(context).size.height*0.1,
-    title: const Text("Ant Work Freelance",style: TextStyle(fontSize: 25)),
+    title: const Text("Ant Work Freelance",style: TextStyle(fontSize: 25,color: Colors.white)),
     centerTitle: true,
     flexibleSpace: Container(
       decoration: const BoxDecoration(
