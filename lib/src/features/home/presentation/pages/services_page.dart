@@ -99,7 +99,8 @@ class _ServicesPageState extends State<ServicesPage>
                         tabController.index = value;
                       });
                     },
-                    indicatorWeight: 3,
+                    dividerColor: Colors.transparent,
+                    indicatorWeight: 2,
                     labelPadding: const EdgeInsets.all(0),
                     labelColor: Colors.white,
                     unselectedLabelColor: Colors.white,

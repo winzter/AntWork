@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../pages/category_detail_page.dart';
 
 class CategoryShow extends StatelessWidget {
   CategoryShow({super.key});
@@ -44,6 +45,7 @@ class CategoryShow extends StatelessWidget {
                   ]
               ),
               child: ListTile(
+                onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context) => CategoryDetailPage(title: title[index],),)),
                 leading: Image.asset("assets/images/category_$index.png",width: 44,height: 44,),
                 title: Text(title[index]),
                 subtitle: Text(subtitle[index]),

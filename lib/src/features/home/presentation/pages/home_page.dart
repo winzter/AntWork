@@ -78,6 +78,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
                 ),
               ),
               const WhatNew(),
+              const SizedBox(height: 70,)
             ],
           ),
         ),
