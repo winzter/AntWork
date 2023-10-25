@@ -25,7 +25,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner:false,
       title: 'AntWork',
       theme: ThemeData(
+        cardColor: Colors.white,
         fontFamily: 'kanit',
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          background: Colors.white,
+        ),
         useMaterial3: true,
       ),
       home: const SplashPage(),

@@ -1,6 +1,9 @@
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/category_show.dart';
+import '../widgets/category_show_selected.dart';
+
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
 
@@ -9,6 +12,8 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +44,7 @@ class _SearchPageState extends State<SearchPage> {
             right: 0,
             bottom: 0,
             child: Container(
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.black26),
                 borderRadius: const BorderRadius.only(
@@ -47,41 +53,49 @@ class _SearchPageState extends State<SearchPage> {
                 ),
                 color: Colors.white,
               ),
-              child:  SingleChildScrollView(
-                physics:const BouncingScrollPhysics(),
-                scrollDirection: Axis.vertical,
-                child: DefaultTabController(
-                  length: 2,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ButtonsTabBar(
-                            radius: 20,
-                            unselectedBackgroundColor: Colors.transparent,
-                            buttonMargin: const EdgeInsets.symmetric(horizontal: 50),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 15,vertical: 0),
-                            decoration: const BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  Color(0xFF6FC9E4),
-                                  Color(0xFFE793B8),
+              child:  DefaultTabController(
+                length: 2,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Flexible(
+                      fit: FlexFit.loose,
+                      child: DefaultTabController(
+                        length: 2,
+                        child: Column(
+                          children: [
+                            ButtonsTabBar(
+                                radius: 20,
+                                unselectedBackgroundColor: Colors.transparent,
+                                buttonMargin: const EdgeInsets.symmetric(horizontal: 50),
+                                contentPadding: const EdgeInsets.symmetric(horizontal: 15,vertical: 0),
+                                decoration: const BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Color(0xFF6FC9E4),
+                                      Color(0xFFE793B8),
+                                    ],
+                                  ),
+                                ),
+                                tabs: const[
+                                  Tab(child: Text("หมวดหมู่",style: TextStyle(color: Colors.black,fontFamily: 'kanit',fontSize: 18),),),
+                                  Tab(child: Text("ความสนใจ",style: TextStyle(color: Colors.black,fontFamily: 'kanit',fontSize: 18),),),
+                                ]),
+                            const SizedBox(height: 10,),
+                            Expanded(
+                              child: TabBarView(
+                                physics: const NeverScrollableScrollPhysics(),
+                                children: [
+                                  CategoryShow(),
+                                  CategoryShowSelected(),
                                 ],
                               ),
                             ),
-                            tabs: const[
-                              Tab(child: Text("หมวดหมู่",style: TextStyle(color: Colors.black,fontFamily: 'kanit'),),),
-                              Tab(child: Text("ความสนใจ",style: TextStyle(color: Colors.black,fontFamily: 'kanit'),),),
-                            ]),
+                          ],
+                        ),
                       ),
-                      const Expanded(child: TabBarView(
-                        children: [
-                          Text("data"),
-                          Text("data"),
-                        ],
-                      ))
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
