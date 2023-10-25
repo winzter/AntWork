@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'pic_indicator.dart';
 
 class ImgAds extends StatefulWidget {
-  const ImgAds({Key? key}) : super(key: key);
+  const ImgAds({super.key});
 
   @override
-  _ImgAdsState createState() => _ImgAdsState();
+  State<ImgAds> createState() => _ImgAdsState();
 }
 
 class _ImgAdsState extends State<ImgAds> {
