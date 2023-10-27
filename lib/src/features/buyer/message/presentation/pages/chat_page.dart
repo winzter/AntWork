@@ -1,7 +1,7 @@
-import 'package:antwork/src/features/message/presentation/widgets/message_appbar.dart';
 import 'package:flutter/material.dart';
 import '../../domain/entities/chat_entity.dart';
 import '../widgets/conversation_list.dart';
+import '../widgets/message_appbar.dart';
 
 
 class ChatPage extends StatefulWidget {

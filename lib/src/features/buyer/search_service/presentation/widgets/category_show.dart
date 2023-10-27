@@ -26,6 +26,7 @@ class CategoryShow extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 70),
       child: ListView.builder(
+        physics: const BouncingScrollPhysics(),
         padding: EdgeInsets.zero,
         itemCount: title.length,
         itemBuilder: (context, index) {

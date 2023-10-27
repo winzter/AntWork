@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import '../../core/provider/bottom_navbar/bottom_navbar_provider.dart';
-import '../../features/home/presentation/pages/home_page.dart';
-import '../../features/message/presentation/pages/chat_page.dart';
-import '../../features/search_service/presentation/pages/search_page.dart';
+import '../../features/buyer/home/presentation/pages/home_page.dart';
+import '../../features/buyer/manage_order/presentation/pages/manager_order_page.dart';
+import '../../features/buyer/message/presentation/pages/chat_page.dart';
+import '../../features/buyer/search_service/presentation/pages/search_page.dart';
+
 
 class BottomNavbar extends StatefulWidget {
   const BottomNavbar({super.key});
@@ -18,7 +20,7 @@ class _BottomNavbarState extends State<BottomNavbar> {
     HomePage(),
     ChatPage(),
     SearchPage(),
-    Text("data4"),
+    ManagerOrderPage(),
     Text("data5"),
   ];
 

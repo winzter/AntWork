@@ -1,5 +1,6 @@
-import 'package:antwork/src/features/home/presentation/pages/product_detail.dart';
 import 'package:flutter/material.dart';
+
+import '../pages/product_detail.dart';
 
 class CardJobs extends StatelessWidget {
 

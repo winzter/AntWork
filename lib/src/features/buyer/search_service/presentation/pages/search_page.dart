@@ -2,7 +2,7 @@ import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/category_show.dart';
-import '../widgets/category_show_selected.dart';
+import 'category_show_selected.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});

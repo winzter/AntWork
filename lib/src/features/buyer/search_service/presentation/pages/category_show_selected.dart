@@ -1,3 +1,4 @@
+import 'package:antwork/src/features/buyer/search_service/presentation/pages/selected_category.dart';
 import 'package:flutter/material.dart';
 
 class CategoryShowSelected extends StatelessWidget {
@@ -27,18 +28,23 @@ class CategoryShowSelected extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 70),
       child: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.all(8.0),
+           Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("สิ่งที่คุณสนใจ",style: TextStyle(fontSize: 17),),
-                Text("แก้ไข",style: TextStyle(color: Color(0xFFE793B8),),),
+                const Text("สิ่งที่คุณสนใจ",style: TextStyle(fontSize: 17),),
+                InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SelectedCategory(),));
+                    },
+                    child:const Text("แก้ไข",style: TextStyle(color: Color(0xFFE793B8),),)),
               ],
             ),
           ),
           Expanded(
             child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
               padding: EdgeInsets.zero,
               itemCount: title.length,
               itemBuilder: (context, index) {
