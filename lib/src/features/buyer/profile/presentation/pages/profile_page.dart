@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import '../../../../../core/features/login/presentation/pages/login_page.dart';
 import '../../../../../core/provider/bottom_navbar/bottom_navbar_provider.dart';
 import '../widgets/list_menu.dart';
 
@@ -147,7 +148,7 @@ class _ProfilePageState extends State<ProfilePage>
                       const SizedBox(
                         height: 15,
                       ),
-                      if(navigationProvider.isSwitch == false)...[
+                      if (navigationProvider.isSwitch == false) ...[
                         const ListMenu(
                           svgName: 'heart',
                           title: 'รายการที่บันทึกไว้',
@@ -160,7 +161,7 @@ class _ProfilePageState extends State<ProfilePage>
                           svgName: 'invite',
                           title: 'เชิญเพื่อน',
                         ),
-                      ]else...[
+                      ] else ...[
                         const ListMenu(
                           svgName: 'profile_on_page',
                           title: 'โปรไฟล์',
@@ -182,7 +183,6 @@ class _ProfilePageState extends State<ProfilePage>
                           title: 'ความพร้อมใช้งาน',
                         ),
                       ],
-
                       const SizedBox(
                         height: 20,
                       ),
@@ -238,8 +238,12 @@ class _ProfilePageState extends State<ProfilePage>
                           ),
                         ),
                         onPressed: () {
-                          navigationProvider
-                              .setIsSwitch(!navigationProvider.isSwitch);
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const LoginPage(),
+                              ));
+                          navigationProvider.setIndex(0);
                         },
                         child: const Padding(
                           padding: EdgeInsets.all(10.0),
