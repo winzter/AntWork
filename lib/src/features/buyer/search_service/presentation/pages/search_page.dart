@@ -1,6 +1,5 @@
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
-
 import '../widgets/category_show.dart';
 import 'category_show_selected.dart';
 
@@ -11,11 +10,10 @@ class SearchPage extends StatefulWidget {
   State<SearchPage> createState() => _SearchPageState();
 }
 
-class _SearchPageState extends State<SearchPage> {
-
-
+class _SearchPageState extends State<SearchPage> with AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: Stack(
         children: [
@@ -104,4 +102,7 @@ class _SearchPageState extends State<SearchPage> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

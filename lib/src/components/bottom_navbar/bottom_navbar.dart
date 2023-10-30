@@ -5,7 +5,9 @@ import '../../core/provider/bottom_navbar/bottom_navbar_provider.dart';
 import '../../features/buyer/home/presentation/pages/home_page.dart';
 import '../../features/buyer/manage_order/presentation/pages/manager_order_page.dart';
 import '../../features/buyer/message/presentation/pages/chat_page.dart';
+import '../../features/buyer/profile/presentation/pages/profile_page.dart';
 import '../../features/buyer/search_service/presentation/pages/search_page.dart';
+import '../../features/vendor/home/presentation/pages/home_vendor_page.dart';
 
 
 class BottomNavbar extends StatefulWidget {
@@ -21,7 +23,14 @@ class _BottomNavbarState extends State<BottomNavbar> {
     ChatPage(),
     SearchPage(),
     ManagerOrderPage(),
-    Text("data5"),
+    ProfilePage(),
+  ];
+
+  List<Widget> pages2 = const [
+    HomeVendorPage(),
+    ChatPage(),
+    ManagerOrderPage(),
+    ProfilePage(),
   ];
 
   @override
@@ -35,7 +44,7 @@ class _BottomNavbarState extends State<BottomNavbar> {
         onPageChanged: (index) {
           navigationProvider.setIndex(index);
         },
-        children: pages,
+        children: navigationProvider.isSwitch?pages2:pages,
       ),
       bottomNavigationBar: Stack(
         children: [
@@ -80,7 +89,72 @@ class _BottomNavbarState extends State<BottomNavbar> {
                     navigationProvider.setIndex(index);
                   },
                   currentIndex: navigationProvider.currentIndex,
-                  items: [
+                  items: navigationProvider.isSwitch?[
+                    BottomNavigationBarItem(
+                      icon: ColorFiltered(
+                        colorFilter: ColorFilter.mode(
+                          navigationProvider.currentIndex == 0
+                              ? const Color(0xffE793B8)
+                              : Colors.grey,
+                          BlendMode.srcIn,
+                        ),
+                        child: SvgPicture.asset(
+                          "assets/icons/home_bbar.svg",
+                          width: 30,
+                          height: 30,
+                        ),
+                      ),
+                      label: "หน้าแรก",
+                    ),
+                    BottomNavigationBarItem(
+                      icon: ColorFiltered(
+                        colorFilter: ColorFilter.mode(
+                          navigationProvider.currentIndex == 1
+                              ? const Color(0xffE793B8)
+                              : Colors.grey,
+                          BlendMode.srcIn,
+                        ),
+                        child: SvgPicture.asset(
+                          "assets/icons/mail_bbar.svg",
+                          width: 30,
+                          height: 30,
+                        ),
+                      ),
+                      label: "ข้อความ",
+                    ),
+                    BottomNavigationBarItem(
+                      icon: ColorFiltered(
+                        colorFilter: ColorFilter.mode(
+                          navigationProvider.currentIndex == 2
+                              ? const Color(0xffE793B8)
+                              : Colors.grey,
+                          BlendMode.srcIn,
+                        ),
+                        child: SvgPicture.asset(
+                          "assets/icons/manage_bbar.svg",
+                          width: 30,
+                          height: 30,
+                        ),
+                      ),
+                      label: "จัดการ",
+                    ),
+                    BottomNavigationBarItem(
+                      icon: ColorFiltered(
+                        colorFilter: ColorFilter.mode(
+                          navigationProvider.currentIndex == 3
+                              ? const Color(0xffE793B8)
+                              : Colors.grey,
+                          BlendMode.srcIn,
+                        ),
+                        child: SvgPicture.asset(
+                          "assets/icons/profile_bbar.svg",
+                          width: 30,
+                          height: 30,
+                        ),
+                      ),
+                      label: "โปรไฟล์",
+                    ),
+                  ]:[
                     BottomNavigationBarItem(
                       icon: ColorFiltered(
                         colorFilter: ColorFilter.mode(

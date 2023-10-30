@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import '../widgets/order_cards.dart';
 
-class ManagerOrderPage extends StatelessWidget {
+class ManagerOrderPage extends StatefulWidget {
   const ManagerOrderPage({super.key});
 
   @override
+  State<ManagerOrderPage> createState() => _ManagerOrderPageState();
+}
+
+class _ManagerOrderPageState extends State<ManagerOrderPage> with AutomaticKeepAliveClientMixin{
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -63,4 +69,7 @@ class ManagerOrderPage extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

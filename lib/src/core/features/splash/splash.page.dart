@@ -1,8 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import '../loading_page/loading_page.dart';
 
-import '../../../components/bottom_navbar/bottom_navbar.dart';
 
 
 class SplashPage extends StatefulWidget {
@@ -16,7 +15,7 @@ class _SplashPageState extends State<SplashPage> {
 
   startSplash() async {
     return Timer(const Duration(seconds: 2), (){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const BottomNavbar()),);
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoadingPage()),);
 
     });
 

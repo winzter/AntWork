@@ -22,6 +22,8 @@ dependencies:
   buttons_tabbar: ^1.3.8
   readmore: ^2.2.0
   percent_indicator: ^4.2.3
+  loading_animation_widget: ^1.2.0+4
+  syncfusion_flutter_charts: ^23.1.42
   badges: ^3.1.2
 
 dev_dependencies:

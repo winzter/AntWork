@@ -11,7 +11,7 @@ class ChatPage extends StatefulWidget {
   State<ChatPage> createState() => _ChatPageState();
 }
 
-class _ChatPageState extends State<ChatPage> {
+class _ChatPageState extends State<ChatPage> with AutomaticKeepAliveClientMixin{
   List<ChatUsers> chatUsers = [
     ChatUsers(name: "Jane Russel", messageText: "Awesome Setup", imageURL: "https://i.pravatar.cc/150?img=0", time: "Now"),
     ChatUsers(name: "Glady's Murphy", messageText: "That's Great", imageURL: "https://i.pravatar.cc/150?img=1", time: "Yesterday"),
@@ -24,6 +24,7 @@ class _ChatPageState extends State<ChatPage> {
   ];
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: messageAppbar(context),
       body: Column(
@@ -67,4 +68,7 @@ class _ChatPageState extends State<ChatPage> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
