@@ -25,6 +25,8 @@ dependencies:
   loading_animation_widget: ^1.2.0+4
   syncfusion_flutter_charts: ^23.1.42
   badges: ^3.1.2
+  dropdown_button2: ^2.3.9
+  file_picker: ^6.0.0
 
 dev_dependencies:
   flutter_test:

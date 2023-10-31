@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:antwork/src/core/features/select_outsource_type/presentation/pages/select_outsource_type.dart';
 import 'package:flutter/material.dart';
 import '../../../components/bottom_navbar/bottom_navbar.dart';
 import '../../../components/widgets/loading.dart';
@@ -17,7 +18,7 @@ class _LoadingPageState extends State<LoadingPage> {
     return Timer(const Duration(seconds: 2), () async {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const BottomNavbar()),
+        MaterialPageRoute(builder: (context) => const SelectOutsourceType()),
       );
     });
   }

@@ -1,8 +1,8 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import '../../../loading_page/loading_page.dart';
+import '../../../register/presentation/pages/route_register_page.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -177,14 +177,26 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             const SizedBox(height: 10),
-                            Row(
+                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 const Text(
-                                  "สมัครสมาชิก",
+                                  "ยังไม่มี Account ใช่ไหม?",
                                   style: TextStyle(
                                       fontSize: 17,
                                       color: Colors.white),
+                                ),
+                                const SizedBox(width: 5,),
+                                InkWell(
+                                  onTap: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => const RouteRegisterPage(),));
+                                  },
+                                  child: const Text(
+                                    "สมัครเลย!",
+                                    style: TextStyle(
+                                        fontSize: 17,
+                                        color: Colors.blueAccent),
+                                  ),
                                 ),
                               ],
                             ),
