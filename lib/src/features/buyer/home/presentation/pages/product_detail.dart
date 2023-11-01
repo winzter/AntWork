@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:readmore/readmore.dart';
+import 'package:badges/badges.dart' as badges;
 
 class ProductDetail extends StatefulWidget {
   final int index;
@@ -144,6 +145,30 @@ class _ProductDetailState extends State<ProductDetail> {
                 const UserComments(),
               ],
             )),
+        floatingActionButton: FloatingActionButton.extended(
+          backgroundColor: const Color(0xff275F77),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadiusDirectional.circular(30)),
+          onPressed: () {},
+          isExtended: true,
+          label:  Row(
+            children: [
+              badges.Badge(
+                position: badges.BadgePosition.bottomEnd(bottom: 2, end: 0),
+                badgeStyle:const badges.BadgeStyle(
+                  badgeColor: Color(0xff3DCF5D),
+                ),
+                child:const CircleAvatar(
+                  radius: 20,
+                  backgroundImage:
+                      NetworkImage("https://i.pravatar.cc/150?img=15"),
+                ),
+              ),
+              const SizedBox(width: 10,),
+              const Text("Chat",style: TextStyle(fontSize: 17),)
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -180,7 +205,7 @@ class UserComments extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width*0.5,
+                width: MediaQuery.of(context).size.width * 0.5,
                 child: LinearPercentIndicator(
                   percent: 0.65,
                   lineHeight: 10,
@@ -188,21 +213,23 @@ class UserComments extends StatelessWidget {
                   progressColor: const Color(0xffA1A1A1),
                 ),
               ),
-              const Row(children: [
-                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
-                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
-                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
-                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
-                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
-                Text("65%")
-              ],)
+              const Row(
+                children: [
+                  Icon(Icons.star_rate_rounded, color: Color(0xffEEAC19)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xffEEAC19)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xffEEAC19)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xffEEAC19)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xffEEAC19)),
+                  Text("65%")
+                ],
+              )
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width*0.5,
+                width: MediaQuery.of(context).size.width * 0.5,
                 child: LinearPercentIndicator(
                   percent: 0.28,
                   lineHeight: 10,
@@ -210,21 +237,23 @@ class UserComments extends StatelessWidget {
                   progressColor: const Color(0xffA1A1A1),
                 ),
               ),
-              const Row(children: [
-                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
-                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
-                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
-                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
-                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
-                Text("28%")
-              ],)
+              const Row(
+                children: [
+                  Icon(Icons.star_rate_rounded, color: Color(0xffEEAC19)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xffEEAC19)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xffEEAC19)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xffEEAC19)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xff757575)),
+                  Text("28%")
+                ],
+              )
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width*0.5,
+                width: MediaQuery.of(context).size.width * 0.5,
                 child: LinearPercentIndicator(
                   percent: 0.05,
                   lineHeight: 10,
@@ -232,21 +261,23 @@ class UserComments extends StatelessWidget {
                   progressColor: const Color(0xffA1A1A1),
                 ),
               ),
-              const Row(children: [
-                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
-                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
-                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
-                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
-                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
-                Text("5%")
-              ],)
+              const Row(
+                children: [
+                  Icon(Icons.star_rate_rounded, color: Color(0xffEEAC19)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xffEEAC19)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xffEEAC19)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xff757575)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xff757575)),
+                  Text("5%")
+                ],
+              )
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width*0.5,
+                width: MediaQuery.of(context).size.width * 0.5,
                 child: LinearPercentIndicator(
                   percent: 0.01,
                   lineHeight: 10,
@@ -254,21 +285,23 @@ class UserComments extends StatelessWidget {
                   progressColor: const Color(0xffA1A1A1),
                 ),
               ),
-              const Row(children: [
-                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
-                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
-                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
-                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
-                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
-                Text("1%")
-              ],)
+              const Row(
+                children: [
+                  Icon(Icons.star_rate_rounded, color: Color(0xffEEAC19)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xffEEAC19)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xff757575)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xff757575)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xff757575)),
+                  Text("1%")
+                ],
+              )
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                width: MediaQuery.of(context).size.width*0.5,
+                width: MediaQuery.of(context).size.width * 0.5,
                 child: LinearPercentIndicator(
                   percent: 0.01,
                   lineHeight: 10,
@@ -276,14 +309,16 @@ class UserComments extends StatelessWidget {
                   progressColor: const Color(0xffA1A1A1),
                 ),
               ),
-              const Row(children: [
-                Icon(Icons.star_rate_rounded,color: Color(0xffEEAC19)),
-                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
-                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
-                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
-                Icon(Icons.star_rate_rounded,color: Color(0xff757575)),
-                Text("1%")
-              ],)
+              const Row(
+                children: [
+                  Icon(Icons.star_rate_rounded, color: Color(0xffEEAC19)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xff757575)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xff757575)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xff757575)),
+                  Icon(Icons.star_rate_rounded, color: Color(0xff757575)),
+                  Text("1%")
+                ],
+              )
             ],
           ),
         ],
@@ -381,7 +416,7 @@ class ShipDetail extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20))),
                 child: const Text(
                   "ซื้อเลย",
-                  style: TextStyle(fontSize: 18,color: Colors.white),
+                  style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
               )),
         )

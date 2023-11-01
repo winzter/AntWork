@@ -1,8 +1,11 @@
 import 'dart:developer';
 import 'dart:io';
-
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:intl/intl.dart';
+
+import 'end_page_job_require.dart';
 
 class RequirementPage extends StatefulWidget {
   const RequirementPage({super.key});
@@ -14,11 +17,59 @@ class RequirementPage extends StatefulWidget {
 class _RequirementPageState extends State<RequirementPage> {
   int currentStep = 0;
 
+  final List<String> category = [
+    "Graphic & Design",
+    "Digital Marketing",
+    "Writing & Translation",
+    "Video & Animation",
+  ];
+
+  TextEditingController dateController = TextEditingController();
+
+  final List<String> industries = [
+    "Art & Design",
+    "Animals & Pets",
+    "Beauty & Cosmetics",
+    "Construction",
+    "Education",
+    "Writing & Publishing",
+    "Photography & Videography",
+  ];
+
+  bool showOptional = false;
+
   String fileName = "No file selected";
   bool isUpload = false;
   String filePath = "";
   late File fileSend;
+
+  Map<String,String?> detail = {
+    'title':null,
+    'des':null,
+    'industriesSelected':null,
+    'categorySelected':null,
+    'budget':null,
+    'date':null,
+  };
   FilePickerResult? result;
+
+  Future pickDate() async {
+    DateTime? newDate = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2015, 1),
+        lastDate: DateTime(2030, 12));
+
+    if (newDate == null) {
+      return;
+    } else {
+      final startDateFormatted = DateFormat("MMM dd, yyyy").format(newDate);
+      setState(() {
+        dateController.text = startDateFormatted;
+        detail['date'] = startDateFormatted;
+      });
+    }
+  }
 
   List<Step> getStep() => [
         Step(
@@ -71,7 +122,11 @@ class _RequirementPageState extends State<RequirementPage> {
                       validator: (value) {
                         return null;
                       },
-                      onChanged: (String username) {},
+                      onChanged: (String value) {
+                        setState(() {
+                          detail['title'] = value;
+                        });
+                      },
                       decoration: const InputDecoration(
                         floatingLabelBehavior: FloatingLabelBehavior.never,
                         fillColor: Colors.white,
@@ -97,7 +152,6 @@ class _RequirementPageState extends State<RequirementPage> {
                       ),
                     ],
                   ),
-
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -121,8 +175,13 @@ class _RequirementPageState extends State<RequirementPage> {
                       validator: (value) {
                         return null;
                       },
-                      onChanged: (String username) {},
+                      onChanged: (String des) {
+                        setState(() {
+                          detail['des'] = des;
+                        });
+                      },
                       decoration: const InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(horizontal: 5,vertical: 5),
                         floatingLabelBehavior: FloatingLabelBehavior.never,
                         fillColor: Colors.white,
                         filled: true,
@@ -136,6 +195,7 @@ class _RequirementPageState extends State<RequirementPage> {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 20,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -191,15 +251,169 @@ class _RequirementPageState extends State<RequirementPage> {
                                 )
                             ],
                           ),
-                          Text(
-                            "*Allowed *.jpeg, *.jpg, *.png, max size of 3 MB",
-                            softWrap: true,
-                            style: TextStyle(color: Colors.grey),
-                          ),
+
                         ],
                       )
                     ],
                   ),
+                  const Text(
+                    "*Allowed *.jpeg, *.jpg, *.png, max size of 3 MB",
+                    softWrap: true,
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  const SizedBox(height: 20,),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Which category best fits your project?",
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10,),
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.grey)),
+                    child: DropdownButtonFormField2(
+                        decoration: const InputDecoration(
+                          contentPadding: EdgeInsets.all(0),
+                          floatingLabelBehavior: FloatingLabelBehavior.never,
+                          fillColor: Colors.white,
+                          filled: true,
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                          errorStyle: TextStyle(
+                              fontFamily: 'kanit', fontSize: 15),
+                          border: OutlineInputBorder(
+                            gapPadding: 0,
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                        ),
+                        validator: (value) {
+                          return null;
+                        },
+                        style: const TextStyle(color: Colors.black, fontSize: 15),
+                        hint: const Text(
+                          "Choose 1 Category",
+                          style: TextStyle(
+                              fontFamily: 'kanit',
+                              fontSize: 15,
+                              color: Colors.grey),
+                        ),
+                        isExpanded: true,
+                        dropdownStyleData: DropdownStyleData(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 5,
+                                  blurRadius: 7,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ]
+                          ),
+                        ),
+                        items: category.map<DropdownMenuItem<String>>(
+                                (String value) {
+                              return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(
+                                    value,
+                                    style: const TextStyle(
+                                        fontFamily: 'kanit', fontSize: 15),
+                                  ));
+                            }).toList(),
+                        onChanged: (String? value) {
+                          setState(() {
+                            showOptional = value != null?true:false;
+                            detail['categorySelected'] = value;
+                          });
+                        }),
+                  ),
+                  const SizedBox(height: 20,),
+                  if(showOptional)...[
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            "Which industry are you in? (Optional)",
+                            style: TextStyle(
+                                fontSize: 17, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10,),
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: Colors.grey)),
+                      child: DropdownButtonFormField2(
+                          decoration: const InputDecoration(
+                            contentPadding: EdgeInsets.all(0),
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
+                            fillColor: Colors.white,
+                            filled: true,
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.grey),
+                            ),
+                            errorStyle: TextStyle(
+                                fontFamily: 'kanit', fontSize: 15),
+                            border: OutlineInputBorder(
+                              gapPadding: 0,
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                            ),
+                          ),
+                          validator: (value) {
+                            return null;
+                          },
+                          style: const TextStyle(color: Colors.black, fontSize: 15),
+                          hint: const Text(
+                            "Choose from the list",
+                            style: TextStyle(
+                                fontFamily: 'kanit',
+                                fontSize: 15,
+                                color: Colors.grey),
+                          ),
+                          isExpanded: true,
+                          dropdownStyleData: DropdownStyleData(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: const Offset(0, 3),
+                                  ),
+                                ]
+                            ),
+                          ),
+                          items: industries.map<DropdownMenuItem<String>>(
+                                  (String value) {
+                                return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(
+                                      value,
+                                      style: const TextStyle(
+                                          fontFamily: 'kanit', fontSize: 15),
+                                    ));
+                              }).toList(),
+                          onChanged: (String? value) {
+                            setState(() {
+                              detail['industriesSelected'] = value;
+                            });
+                          }),
+                    ),
+                  ]
                 ],
               ),
             ),
@@ -208,7 +422,115 @@ class _RequirementPageState extends State<RequirementPage> {
         ),
         Step(
           title: const Text("Timeline & Budget"),
-          content: Container(),
+          content: Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 3,
+                    blurRadius: 3,
+                    offset: const Offset(0, 3),
+                  ),
+                ]),
+            child: Form(
+              child: Column(
+                children: [
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "I'm looking to spend..",
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10,),
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.grey)),
+                    child: TextFormField(
+                      maxLines: 1,
+                      style: const TextStyle(fontSize: 17),
+                      validator: (value) {
+                        return null;
+                      },
+                      onChanged: (String val) {
+                        setState((){
+                          detail['budget'] = val;
+                        });
+                      },
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        prefixIcon: Icon(Icons.attach_money_sharp,color: Colors.grey,),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 5),
+                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                        fillColor: Colors.white,
+                        filled: true,
+                        labelText: "up to",
+                        labelStyle: TextStyle(color: Colors.grey,),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
+                        errorStyle: TextStyle(fontSize: 15),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20,),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Let’s talk timing",
+                        style: TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10,),
+                  Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Colors.grey)),
+                    child: TextFormField(
+                      textAlign: TextAlign.center,
+                      controller: dateController,
+                      readOnly: true,
+                      onTap: pickDate,
+                      maxLines: 1,
+                      style: const TextStyle(fontSize: 17),
+                      validator: (value) {
+                        return null;
+                      },
+                      onChanged: (String username) {
+                      },
+                      decoration: const InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(horizontal: 5),
+                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                        fillColor: Colors.white,
+                        filled: true,
+                        labelText: "Ideal delivery date",
+                        suffixIcon: Icon(Icons.calendar_month,color: Colors.grey,),
+                        labelStyle: TextStyle(color: Colors.grey,),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
+                        errorStyle: TextStyle(fontSize: 15),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20,),
+
+                ],
+              ),
+            ),
+          ),
           isActive: currentStep >= 1,
         ),
       ];
@@ -238,7 +560,7 @@ class _RequirementPageState extends State<RequirementPage> {
           onStepContinue: () {
             final isLastStep = currentStep == getStep().length - 1;
             if (isLastStep) {
-              print("Complete");
+              Navigator.push(context, MaterialPageRoute(builder: (context) => EndPageJobRequire(detail: detail,),));
             } else {
               setState(() {
                 currentStep += 1;
@@ -248,7 +570,7 @@ class _RequirementPageState extends State<RequirementPage> {
           onStepCancel: () {
             final bool isFirstStep = currentStep == 0;
             if (isFirstStep) {
-              print("Back to start");
+              Navigator.pop(context);
             } else {
               setState(() {
                 currentStep -= 1;
