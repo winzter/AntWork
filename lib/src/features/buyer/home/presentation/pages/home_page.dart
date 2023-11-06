@@ -1,3 +1,4 @@
+import 'package:antwork/src/features/buyer/home/presentation/pages/requirement_page.dart';
 import 'package:flutter/material.dart';
 import '../widgets/widgets.dart';
 
@@ -80,6 +81,25 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
               const WhatNew(),
               const SizedBox(height: 70,)
             ],
+          ),
+        ),
+      ),
+      drawer: Drawer(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                ListTile(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const RequirementPage(),));
+                  },
+                  title: const Text("Request Post",style: TextStyle(fontSize:  18),),
+                  leading: const Icon(Icons.request_page),
+                ),
+                const Divider(thickness: 1,color: Color(0xffc4c4c4),),
+              ],
+            ),
           ),
         ),
       ),

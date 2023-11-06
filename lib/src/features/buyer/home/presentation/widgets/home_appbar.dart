@@ -9,16 +9,21 @@ PreferredSizeWidget homeAppbar(BuildContext context) {
     title: const Text("Ant Work Freelance",
         style: TextStyle(fontSize: 25, color: Colors.white)),
     centerTitle: true,
-    actions: [
-      IconButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const RequirementPage(),));
-          },
-          icon: const Icon(
-            Icons.add_circle_outlined,
-            color: Colors.white,
-            size: 40,
-          ))
+    actions: const [
+      // IconButton(
+      //     onPressed: () {
+      //       Navigator.push(context, MaterialPageRoute(builder: (context) => const RequirementPage(),));
+      //     },
+      //     icon: const Icon(
+      //       Icons.add_circle_outlined,
+      //       color: Colors.white,
+      //       size: 40,
+      //     )),
+      // DrawerButton(
+      //   onPressed: () {
+      //     Scaffold.of(context).openDrawer();
+      //   },
+      // )
     ],
     flexibleSpace: Container(
       decoration: const BoxDecoration(
